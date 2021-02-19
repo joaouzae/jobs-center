@@ -1,0 +1,53 @@
+<h1>Nova Vaga</h1>
+<% if @vacancy.errors.any? %>
+  <div class="alert">
+    <p>Não foi possível criar a vaga</p>
+    <p>Os seguintes erros ocorreram:</p>
+    <ul>
+      <% @vacancy.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: @vacancy) do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :salary_range %>
+    <br>
+    <%= f.label :salary_bottom %>
+    <%= f.text_field :salary_bottom %>
+  </div>
+  <div>
+    <%= f.label :salary_top %>
+    <%= f.text_field :salary_top %>
+  </div>
+  <!--<div>
+    <%= f.label :level %>
+    <%= f.text_field :level %>
+  </div>-->
+  <div>
+    <%= f.label :level %>
+    <%= f.select :level, ["Júnior", "Pleno", "Sênior"], prompt: true %>
+  </div>
+  <div>
+    <%= f.label :requirements %>
+    <%= f.text_field :requirements %>
+  </div>
+  <div>
+    <%= f.label :expiration_date %>
+    <%= f.text_field :expiration_date %>
+  </div>
+  <div>
+    <%= f.label :quantity %>
+    <%= f.text_field :quantity %>
+  </div>
+  <%= f.submit 'Criar Vaga' %>
+<% end %>

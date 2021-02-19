@@ -1,32 +1,42 @@
-class VancanciesController < ApplicationController
+class VacanciesController < ApplicationController
+  # before_action :authenticate_employee!
+
   def index
+    @vacancies = Vacancy.all
   end
 
   def show
-    @vacancy = Vancancy.find(params[:id])
+    @vacancy = Vacancy.find(params[:id])
   end
 
   def new
+    authenticate_employee!
     @vacancy = Vacancy.new
+    @levels = Level.all
   end
 
   def create
-    # vacancy_params = vacancy_params
-    @vacancy = Vacancy.new(vacancy_params)
-    @vacancy.user = current_user
+    authenticate_employee!
+    # if current_user is not of type Employee, don't allow them to proceed.
+    # if current_user.class != Employee:
+    @vacancy = Vacancy.new(vacancy_params())
+    @vacancy.employee = current_user
 
     if @vacancy.save
       redirect_to @vacancy
     else
+      @levels = Levels.all
       render 'new' 
     end
   end
 
   def edit
+    authenticate_employee!
     @vacancy = Vacancy.find(params[:id])
   end
 
   def update
+    authenticate_employee!
     @vacancy = Vacancy.find(params[:id])
     # vacancy_params = vacancy_params
     if @vacancy.update(vacancy_params)

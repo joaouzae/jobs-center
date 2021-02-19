@@ -8,3 +8,13 @@ pt-BR:
       user:
         email: E-mail
         password: Senha
+      vacancy:
+        title: Título
+        description: Descrição
+        salary_range: Faixa Salarial
+        salary_bottom: Entre
+        salary_top: e
+        level: Nível
+        requirements: Pré-requisitos
+        expiration_date: Data Limite para se Candidatar
+        quantity: Número de Vagas

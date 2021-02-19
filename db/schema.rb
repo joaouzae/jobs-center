@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_14_000359) do
+ActiveRecord::Schema.define(version: 2021_02_18_200408) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -21,6 +21,26 @@ ActiveRecord::Schema.define(version: 2021_02_14_000359) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "name"
+    t.integer "vacancy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["vacancy_id"], name: "index_levels_on_vacancy_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,14 +58,16 @@ ActiveRecord::Schema.define(version: 2021_02_14_000359) do
   create_table "vacancies", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "salary_range"
     t.string "level"
     t.text "requirements"
     t.date "expiration_date"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "salary_bottom"
+    t.decimal "salary_top"
   end
 
   add_foreign_key "companies", "users"
+  add_foreign_key "levels", "vacancies"
 end

@@ -1,7 +1,7 @@
 <% if @vacancies.empty? %>
   <div class="warning">Nenhuma vaga cadastrada</div>
 <% end %>
-<%= link_to 'Cadastrar uma Vaga', new_vacancy_path %>
+<%= link_to 'Cadastrar uma Vaga', new_employee_vacancy_path %>
 <% @vacancies.each do |vacancy| %>
 <dl>
   <dt>Título</dt>

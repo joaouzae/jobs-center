@@ -1,4 +1,4 @@
-class VacanciesController < ApplicationController
+class Employee::VacanciesController < ApplicationController
   # before_action :authenticate_employee!
 
   def index
@@ -12,7 +12,6 @@ class VacanciesController < ApplicationController
   def new
     authenticate_employee!
     @vacancy = Vacancy.new
-    @levels = Level.all
   end
 
   def create

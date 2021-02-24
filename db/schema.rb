@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_211141) do
+ActiveRecord::Schema.define(version: 2021_02_20_211243) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_02_24_211141) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_employees_on_company_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
@@ -79,5 +81,6 @@ ActiveRecord::Schema.define(version: 2021_02_24_211141) do
     t.decimal "salary_top"
   end
 
+  add_foreign_key "employees", "companies"
   add_foreign_key "levels", "vacancies"
 end

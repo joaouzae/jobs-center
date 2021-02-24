@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :employee do
     resources :vacancies
   end
+  resources :companies
   devise_for :employees
   # devise_for :applicant, controllers: { registrations: "registrations" }
   devise_for :applicants

@@ -10,7 +10,7 @@
     </ul>
   </div>
 <% end %>
-<%= form_with(model: @vacancy) do |f| %>
+<%= form_with(model: [ :employee, @vacancy ]) do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -29,10 +29,6 @@
     <%= f.label :salary_top %>
     <%= f.text_field :salary_top %>
   </div>
-  <!--<div>
-    <%= f.label :level %>
-    <%= f.text_field :level %>
-  </div>-->
   <div>
     <%= f.label :level %>
     <%= f.select :level, ["Júnior", "Pleno", "Sênior"], prompt: true %>

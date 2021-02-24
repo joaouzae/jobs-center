@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_025043) do
+ActiveRecord::Schema.define(version: 2021_02_20_211243) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,8 +31,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_025043) do
     t.string "site"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_companies_on_user_id"
+    t.string "domain"
   end
 
   create_table "employees", force: :cascade do |t|
@@ -43,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_02_19_025043) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_employees_on_company_id"
     t.index ["email"], name: "index_employees_on_email", unique: true
     t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   end
@@ -80,6 +81,6 @@ ActiveRecord::Schema.define(version: 2021_02_19_025043) do
     t.decimal "salary_top"
   end
 
-  add_foreign_key "companies", "users"
+  add_foreign_key "employees", "companies"
   add_foreign_key "levels", "vacancies"
 end

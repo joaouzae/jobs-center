@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Employee signs in' do
   scenario 'successfully' do
-    user = User.create!(email: 'joao@email.com', password: '123456')
+    user = Employee.create!(email: 'joao@campuscode.com.br', password: '123456')
 
     visit root_path
     click_on 'Entrar'
@@ -19,7 +19,7 @@ feature 'Employee signs in' do
   end
 
   scenario 'and logout' do
-    user = User.create!(email: 'joao@email.com', password: '123456')
+    user = Employee.create!(email: 'joao@campuscode.com.br', password: '123456')
 
     visit root_path
     click_on 'Entrar'

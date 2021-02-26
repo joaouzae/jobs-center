@@ -1,7 +1,12 @@
 <h1>Jobs Center</h1>
 
-<%= link_to t("vacancies_link"), employee_vacancies_path %>
-<%= link_to 'Cadastrar Funcionário', new_employee_registration_path %>
+<% if employee_signed_in? %>
+  <%= link_to t("vacancies_link"), employee_vacancies_path %>
+<% elsif applicant_signed_in? %>
+  <%= link_to t("vacancies_link"), applicant_vacancies_path %>
+<% else %>
+  <%= link_to t("vacancies_link"), visitor_vacancies_path %>
+<% end %>
 <%# t("hello") %>
 
 

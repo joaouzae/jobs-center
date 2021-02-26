@@ -15,8 +15,12 @@
       <% if employee_signed_in? %>
         <%= current_employee.email %>
         <%= link_to 'Sair', destroy_employee_session_path, method: :delete  %>
+      <% elsif applicant_signed_in? %>
+        <%= current_applicant.email %>
+        <%= link_to 'Sair', destroy_applicant_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Entrar', new_employee_session_path %>
+        <%= link_to 'Entrar como candidato', new_applicant_session_path %>
+        <%= link_to 'Entrar como funcionário', new_employee_session_path %>
       <% end %>
     </nav>
     <p class="notice"><%= notice %></p>

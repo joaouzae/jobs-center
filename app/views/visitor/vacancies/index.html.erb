@@ -1,0 +1,22 @@
+<% if @vacancies.empty? %>
+  <div class="warning">Nenhuma vaga cadastrada</div>
+<% end %>
+<% @vacancies.each do |vacancy| %>
+  <div>
+    <dl>
+      <dt>Título</dt>
+      <dd><%= link_to vacancy.title, vacancy %></dd>
+      <dt>Descrição</dt>
+      <dd><%= vacancy.description %></dd>
+      <dt>Nível</dt>
+      <dd><%= vacancy.level %></dd>
+      <dt>Pré-requisitos</dt>
+      <dd><%= vacancy.requirements %></dd>
+      <dt>Acaba em</dt>
+      <dd><%= vacancy.expiration_date %></dd>
+      <dt>Número de vagas</dt>
+      <dd><%= vacancy.quantity %></dd>
+      <hr>
+    </dl>
+  </div>
+<% end %>

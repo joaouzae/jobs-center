@@ -1,11 +1,16 @@
-class Employee::CompaniesController < ApplicationController
+class CompaniesController < ApplicationController
   before_action :authenticate_employee!
 
   def index
+    @company = Company.all
+  end
+
+  def show
+    @company = Company.find(params[:id])
   end
 
   def new
-    Company.new
+    @company = Company.new
   end
 
   def create
@@ -23,3 +28,4 @@ class Employee::CompaniesController < ApplicationController
   def company_params
     params.require(:company).permit(:name, :address, :cnpj, :site)
   end
+end

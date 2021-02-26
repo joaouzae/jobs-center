@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Employee, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Employee do
+  xcontext "creation" do
+    # employee = Employee.create!(email: 'joao@campuscode.com.br', password: '123456')
+
+    # expect
+  end
 end

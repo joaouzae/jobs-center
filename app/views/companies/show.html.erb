@@ -1,0 +1,13 @@
+<dl>
+  <dt>Título</dt>
+  <dd><%= @company.name %></dd>
+  <!--<dt><%= Vacancy.human_attribute_name(:description) %></dt>-->
+  <dt>Endereço</dt>
+  <dd><%= @company.address %></dd>
+  <dt>CNPJ</dt>
+  <dd><%= @company.cnpj %></dd>
+  <dt>Site</dt>
+  <dd><%= @company.site %></dd>
+</dl>
+
+<%= link_to 'Voltar', companies_path %>

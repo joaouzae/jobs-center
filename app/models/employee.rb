@@ -7,9 +7,31 @@ class Employee < ApplicationRecord
 
   validates :email, presence: true
   before_validation :create_company
-
+  after_create :associate_domain_to_company
   private
   def create_company
-    self.company = Company.create!()
+    #só criar uma nova empresa se não existir nenhuma com o mesmo domínio do employee
+    company = Company.find_by(domain: self.employee_domain())
+    if company
+      self.company = company
+    else
+      self.company = Company.new
+      self.company.save(:validate => false)
+    end
+  end
+
+  def associate_domain_to_company
+    unless self.company_has_domain?
+      self.company.domain = self.employee_domain()
+      self.company.save(:validate => false)
+    end
+  end
+
+  def employee_domain
+    self.email.split('@').last
+  end
+
+  def company_has_domain?
+    self.company.domain
   end
 end

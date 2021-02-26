@@ -1,0 +1,31 @@
+<h1>Novo candidato</h1>
+<% if @company.errors.any? %>
+  <div class="alert">
+    <p>Não foi possível criar seu perfil</p>
+    <p>Os seguintes erros ocorreram:</p>
+    <ul>
+      <% @company.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with(model: [:applicant, @company]) do |f| %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :cnpj %>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div>
+    <%= f.label :site %>
+    <%= f.text_field :site %>
+  </div>
+  <%= f.submit 'Criar Empresa' %>
+<% end %>

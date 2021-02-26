@@ -18,7 +18,7 @@ class Employee::VacanciesController < ApplicationController
     @vacancy.employee = current_employee
 
     if @vacancy.save
-      redirect_to @vacancy
+      redirect_to [:employee, @vacancy]
     else
       @levels = Levels.all
       render 'new' 

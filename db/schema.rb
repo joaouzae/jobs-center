@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_211243) do
+ActiveRecord::Schema.define(version: 2021_02_26_185312) do
 
   create_table "applicants", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,18 +56,6 @@ ActiveRecord::Schema.define(version: 2021_02_20_211243) do
     t.index ["vacancy_id"], name: "index_levels_on_vacancy_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index "\"email\", \"subdomain\"", name: "index_users_on_email_and_subdomain", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
   create_table "vacancies", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -79,8 +67,11 @@ ActiveRecord::Schema.define(version: 2021_02_20_211243) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "salary_bottom"
     t.decimal "salary_top"
+    t.integer "employee_id", null: false
+    t.index ["employee_id"], name: "index_vacancies_on_employee_id"
   end
 
   add_foreign_key "employees", "companies"
   add_foreign_key "levels", "vacancies"
+  add_foreign_key "vacancies", "employees"
 end

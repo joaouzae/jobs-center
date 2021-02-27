@@ -5,7 +5,7 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :email, presence: true
+  # validates :email, presence: true
   before_validation :create_company
   after_create :associate_domain_to_company
 

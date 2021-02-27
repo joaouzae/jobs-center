@@ -14,9 +14,12 @@ Rails.application.routes.draw do
   end
 
   resources :companies, except: %i[index]
+  
+
   devise_for :employees, controllers: { registrations: "registrations" }
   # devise_for :applicant, controllers: { registrations: "registrations" }
   devise_for :applicants
+
   
 
 

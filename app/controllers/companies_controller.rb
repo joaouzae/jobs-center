@@ -14,6 +14,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
+    Employee.last
     @company = Company.last
     @company.update(company_params())
 

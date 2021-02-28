@@ -1,5 +1,8 @@
 class Company < ApplicationRecord
+  # has_many :employees
+
   has_many :employees
+  has_many :vacancies, through: :employees
 
   validates :name, :cnpj, presence: true, uniqueness: true
   validates :site, uniqueness: true

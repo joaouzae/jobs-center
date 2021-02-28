@@ -1,8 +1,9 @@
-class Employee::VacanciesController < ApplicationController
+class Company::VacanciesController < ApplicationController
   before_action :authenticate_employee!
 
   def index
-    @vacancies = Vacancy.all #colocar query restringindo a vagas do current_employee
+    company = current_employee.company
+    @vacancies = company.vacancies
   end
 
   def show

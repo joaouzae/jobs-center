@@ -16,7 +16,7 @@ describe Vacancy do
     end
 
     it 'error messages are in portuguese' do
-      employee = Employee.create!(email: 'joao@email.com', password: '123456')
+      employee = Employee.create!(email: 'joao@campuscode.com.br', password: '123456')
       vacancy = Vacancy.new(employee: employee)
 
       vacancy.valid?

@@ -1,0 +1,13 @@
+<dl>
+  <dt>Nome Completo / Nome Social</dt>
+  <dd><%= @applicant.name %></dd>
+  <!--<dt><%= Vacancy.human_attribute_name(:description) %></dt>-->
+  <dt>CPF</dt>
+  <dd><%= @applicant.cpf %></dd>
+  <dt>Telefone</dt>
+  <dd><%= @applicant.phone %></dd>
+  <dt>Biografia Resumida</dt>
+  <dd><%= @applicant.bio %></dd>
+</dl>
+
+<%= link_to 'Voltar', applicant_appliancies_path %>

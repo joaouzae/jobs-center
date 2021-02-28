@@ -22,11 +22,11 @@ Rails.application.routes.draw do
 
   resources :companies, except: %i[index]
   
-
-  devise_for :employees, controllers: { registrations: "registrations" }
-  # devise_for :applicant, controllers: { registrations: "registrations" }
-  devise_for :applicants
-
+  
+  devise_for :employees, controllers: { registrations: "employee/registrations" }
+  devise_for :applicants, controllers: { registrations: "applicant/registrations"}
+  
+  resources :applicants, except: %i[create new]
   
 
 

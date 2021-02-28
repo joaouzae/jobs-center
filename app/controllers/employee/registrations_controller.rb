@@ -1,6 +1,4 @@
-# esse arquivo é só para funcionários.
-# é para ver se a empresa já existe
-class RegistrationsController < Devise::RegistrationsController
+class Employee::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)

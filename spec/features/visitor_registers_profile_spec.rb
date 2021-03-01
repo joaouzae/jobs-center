@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor applies to vacancy' do
+feature 'Visitor registers profile' do
   scenario 'from vacancies page' do
     #criar a vaga
     employee = Employee.create!(email: 'joao@campuscode.com.br', password: '123456')
@@ -52,6 +52,24 @@ feature 'Visitor applies to vacancy' do
     click_on 'vaga da hora'
     click_on 'Candidatar'
 
-    fill_in 
+    within('form') do
+      fill_in 'Email', with: 'joao@gmail.com'
+      fill_in 'Password', with: '123456'
+      fill_in 'Password confirmation', with: '123456'
+      click_on 'Sign up'
+    end
+
+    fill_in 'Name', with: 'João'
+    fill_in 'Cpf', with: '12345678912'
+    fill_in 'Phone', with: '12345678'
+    fill_in 'Bio', with: 'Eu nasci numa cidadezinha chamada...'
+    click_on 'Salvar perfil'
+
+    expect(page).to have_link('Sair')
+    expect(page).to have_content('João')
+    expect(page).to have_content('12345678912')
+    expect(page).to have_content('12345678')
+    expect(page).to have_content('Eu nasci numa cidadezinha chamada...')
+
   end
 end

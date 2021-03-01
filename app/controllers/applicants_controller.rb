@@ -23,7 +23,7 @@ class ApplicantsController < ApplicationController
 
   private
     def applicant_params
-      params.require(:applicant).permit(:social_name, :cpf, 
+      params.require(:applicant).permit(:name, :cpf, 
                                         :phone, :bio)
     end
 end
